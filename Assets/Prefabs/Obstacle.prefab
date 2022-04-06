@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5774164893313665290}
   - component: {fileID: 7602623041033807948}
   - component: {fileID: -7089548709370432454}
+  - component: {fileID: 6118264460991583884}
   m_Layer: 6
   m_Name: Obstacle
   m_TagString: Enemies
@@ -135,8 +136,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  sideOffset: 1
-  rayLength: 0.1
 --- !u!114 &-7089548709370432454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,5 +146,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 154f53cc03a006d4081636fd61e0e2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6118264460991583884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5774164893313665300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d067fabc1795e4849a02e94335a616da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    static ObstacleSpawner instance;
     public GameObject obstaclePrefab;
-    public ObstacleColliding obstacleCollidingScript;
-    int startObstacleNumber = 5;
+    int obstaclesNum = 5;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
-        for (int i = 0; i < startObstacleNumber; i++)
+        for (int i = 0; i < obstaclesNum; i++)
         {
             Instantiate(obstaclePrefab, new Vector2(Random.Range(-1.85f, 1.85f), i * -2f), Quaternion.identity);
+            /*GameObject obstacle = ObstaclePool.SharedInstance.GetPooledObject();
+            if (obstacle != null)
+            {
+                obstacle.transform.position = new Vector2(Random.Range(-1.85f, 1.85f), i * -2f);
+                obstacle.transform.rotation = Quaternion.identity;
+                obstacle.SetActive(true);
+            }*/
         }
     }
 
-    private void Update()
+    public static void SpawnOneObstacle() 
     {
-        
+        Instantiate(instance.obstaclePrefab, new Vector2(Random.Range(-1.85f, 1.85f), instance.obstaclesNum * -2f), Quaternion.identity);
+        instance.obstaclesNum++;
     }
 
-    void SpawnMoreObstacles() 
-    {
-
-    }
 }

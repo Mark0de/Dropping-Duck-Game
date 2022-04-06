@@ -5,15 +5,21 @@ using UnityEngine;
 public class ObstacleSideChecking : MonoBehaviour
 {
     public LayerMask playerLayer;
-    public float sideOffset;
-    public float rayLength;
+    float sideOffset = 1;
+    float rayLength = 0.1f;
+    float longRayLength = 3f;
+    bool isPlayerPassed = false;
 
     private void FixedUpdate()
     {
-        SideChecking();
+        if (GameManager.GameOver())
+            return;
+
+        KillPlayerSideChecking();
+        SpawnObstacleSideChecking();
     }
 
-    void SideChecking()
+    void KillPlayerSideChecking()
     {
         RaycastHit2D leftCheck = Raycast(new Vector2(-sideOffset, 0f), Vector2.left, rayLength, playerLayer);
         RaycastHit2D rightCheck = Raycast(new Vector2(sideOffset, 0f), Vector2.right, rayLength, playerLayer);
@@ -22,6 +28,30 @@ public class ObstacleSideChecking : MonoBehaviour
         {
             GameManager.PlayerDied();
         }
+    }
+
+    void SpawnObstacleSideChecking() 
+    {
+        RaycastHit2D LeftSideCheck = Raycast(new Vector2(-sideOffset, 0f), Vector2.left, longRayLength, playerLayer);
+        RaycastHit2D RightSideCheck = Raycast(new Vector2(sideOffset, 0f), Vector2.right, longRayLength, playerLayer);
+
+        if (!isPlayerPassed)
+        {
+            if (LeftSideCheck || RightSideCheck)
+            {
+                ObstacleSpawner.SpawnOneObstacle();
+                isPlayerPassed = true;
+            }
+        }
+        else if (isPlayerPassed)
+        {
+            Invoke("ActivateRay", 0.5f);
+        }
+    }
+
+    void ActivateRay() 
+    {
+        isPlayerPassed = false;
     }
 
     RaycastHit2D Raycast(Vector2 offset, Vector2 rayDirection, float length, LayerMask layer)

@@ -7,21 +7,12 @@ public class GameManager : MonoBehaviour
 {
     static GameManager instance;
     bool isGameOver = false;
-    int gameoverLayer;
     Rigidbody2D rb;
+
     private void Awake()
     {
         instance = this;
-        gameoverLayer = LayerMask.NameToLayer("Gameover");
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == gameoverLayer)
-        {
-            PlayerDied();
-        }
     }
 
     public static bool GameOver()

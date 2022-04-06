@@ -5,9 +5,8 @@ using UnityEngine;
 public class PlayerDropping : MonoBehaviour
 {
     Rigidbody2D rb;
-    float downwardForce = 15f;
+    float downwardVelocity = 15f;
     public bool isHeld = false;
-    public PlayerBouncing playerBouncingScript;
 
     private void Start()
     {
@@ -28,10 +27,10 @@ public class PlayerDropping : MonoBehaviour
 
     void HoldToDrop() 
     {
-        if (Input.GetMouseButton(1) && rb.bodyType == RigidbodyType2D.Dynamic && playerBouncingScript.isCollided == false)
+        if (Input.GetMouseButton(0) && rb.bodyType == RigidbodyType2D.Dynamic && !PlayerBouncing.PlayerCollided())
         {
             isHeld = true;
-            rb.velocity = new Vector2(rb.velocity.x, -downwardForce);
+            rb.velocity = new Vector2(rb.velocity.x, -downwardVelocity);
         }
         else 
         {

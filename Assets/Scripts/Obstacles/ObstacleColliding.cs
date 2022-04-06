@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ObstacleColliding : MonoBehaviour
 {
-    public int KilledObstaclesNum;
     int playerLayer;
     float delayTime = 0.25f;
-    
-    void Start()
+
+    private void Awake()
     {
         playerLayer = LayerMask.NameToLayer("Player");
     }
@@ -16,7 +15,7 @@ public class ObstacleColliding : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == playerLayer)
-        { 
+        {
             StartCoroutine(DestroyAfterTime(delayTime));
         }
     }
@@ -30,8 +29,6 @@ public class ObstacleColliding : MonoBehaviour
         {
             gameObject.SetActive(false);
             //Destroy(gameObject);
-            KilledObstaclesNum++;
         }
     }
-
 }
