@@ -27,12 +27,13 @@ public class PlayerDropping : MonoBehaviour
 
     void HoldToDrop() 
     {
-        if (Input.GetMouseButton(0) && rb.bodyType == RigidbodyType2D.Dynamic && !PlayerBouncing.PlayerCollided())
+        if (SwipeManager.swipeDown && rb.bodyType == RigidbodyType2D.Dynamic && !PlayerBouncing.PlayerCollided())
         {
             isHeld = true;
+            //rb.AddForce(transform.up * -downwardVelocity, ForceMode2D.Impulse);
             rb.velocity = new Vector2(rb.velocity.x, -downwardVelocity);
         }
-        else 
+        else if (PlayerBouncing.PlayerCollided())
         {
             isHeld = false;
         }

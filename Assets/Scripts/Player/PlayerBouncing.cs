@@ -36,7 +36,7 @@ public class PlayerBouncing : MonoBehaviour
             isCollided = true;
             isHitted = true;
             StartCoroutine(IncrementKilledNumAfterTime(delayTime));
-            Invoke("SetBoolBack", 1f);
+            Invoke("SetBoolBack", 0.5f);
             rb.velocity = new Vector2(rb.velocity.x, upwardVelocity);//這個不會越跳越低
             //rb.AddForce(transform.up * upwardForce, ForceMode2D.Impulse);
         }

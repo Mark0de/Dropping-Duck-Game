@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerFlipping : MonoBehaviour
 {
     public bool isFliped = false;
-    float flipTime = 0.2f;
     public LayerMask enemiesLayer;
     public PlayerDropping playerDroppingScript;
+
+    float flipTime = 0.2f;
     float verticalOffset = 0.5f;
     float horizontalOffset = 0.6f;
     float rayLength = 0.15f;

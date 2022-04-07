@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PlayerSwiping : MonoBehaviour
 {
-    private int desiredLane = 1; //0: Left, 1: Middle, 2: Right
-    public float laneDistance = 4f; //The distance between two lanes
-    private float switchLaneSpeed = 80f;
+    int desiredLane = 1; //0: Left, 1: Middle, 2: Right
+    float laneDistance = 2f; //The distance between two lanes
+    float switchLaneSpeed = 80f;
 
     void Update()
     {
         if (GameManager.GameOver())
             return;
 
+        SwipingInput();
+    }
+
+    void SwipingInput() 
+    {
         if (SwipeManager.swipeLeft)
         {
             desiredLane--;
@@ -30,7 +35,7 @@ public class PlayerSwiping : MonoBehaviour
 
         if (desiredLane == 0)
         {
-            targetPosition += Vector2.left * laneDistance; 
+            targetPosition += Vector2.left * laneDistance;
         }
         else if (desiredLane == 2)
         {
