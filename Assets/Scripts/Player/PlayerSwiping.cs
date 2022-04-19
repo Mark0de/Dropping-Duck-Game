@@ -20,12 +20,14 @@ public class PlayerSwiping : MonoBehaviour
     {
         if (SwipeManager.swipeLeft)
         {
+            FindObjectOfType<AudioManager>().Play("Whooshing");
             desiredLane--;
             if (desiredLane == -1)
                 desiredLane = 0;
         }
         else if (SwipeManager.swipeRight)
         {
+            FindObjectOfType<AudioManager>().Play("Whooshing");
             desiredLane++;
             if (desiredLane == 3)
                 desiredLane = 2;

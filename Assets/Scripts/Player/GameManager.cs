@@ -24,11 +24,11 @@ public class GameManager : MonoBehaviour
     {
         instance.rb.bodyType = RigidbodyType2D.Static;
         instance.isGameOver = true;
-        instance.Invoke("RestartScene", 1.5f);
+        instance.Invoke("LoadDiedScene", 1f);
     }
 
-    void RestartScene() 
+    void LoadDiedScene() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

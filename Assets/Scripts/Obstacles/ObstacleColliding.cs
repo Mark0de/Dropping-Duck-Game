@@ -31,4 +31,13 @@ public class ObstacleColliding : MonoBehaviour
             //Destroy(gameObject);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == playerLayer)
+        {
+            Debug.Log("Hit Obstacle Sides!");
+            GameManager.PlayerDied();
+        }
+    }
 }

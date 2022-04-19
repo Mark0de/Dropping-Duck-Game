@@ -18,13 +18,6 @@ public class ObstacleSpawner : MonoBehaviour
         for (int i = 0; i < obstaclesNum; i++)
         {
             Instantiate(obstaclePrefab, new Vector2(Random.Range(-1.85f, 1.85f), i * -2f), Quaternion.identity);
-            /*GameObject obstacle = ObstaclePool.SharedInstance.GetPooledObject();
-            if (obstacle != null)
-            {
-                obstacle.transform.position = new Vector2(Random.Range(-1.85f, 1.85f), i * -2f);
-                obstacle.transform.rotation = Quaternion.identity;
-                obstacle.SetActive(true);
-            }*/
         }
     }
 

@@ -8,7 +8,7 @@ public class PlayerFlipping : MonoBehaviour
     public LayerMask enemiesLayer;
     public PlayerDropping playerDroppingScript;
 
-    float flipTime = 0.2f;
+    float flipTime = 0.5f;
     float verticalOffset = 0.5f;
     float horizontalOffset = 0.6f;
     float rayLength = 0.15f;
@@ -61,6 +61,7 @@ public class PlayerFlipping : MonoBehaviour
 
         if ((LeftbottomCheck || RightbottomCheck) && isFliped)
         {
+            Debug.Log("Head Hit Ground!");
             GameManager.PlayerDied();
         }
     }

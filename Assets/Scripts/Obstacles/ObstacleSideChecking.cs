@@ -5,8 +5,7 @@ using UnityEngine;
 public class ObstacleSideChecking : MonoBehaviour
 {
     public LayerMask playerLayer;
-    float sideOffset = 1;
-    float rayLength = 0.1f;
+    float sideOffset = 1f;
     float longRayLength = 3f;
     bool isPlayerPassed = false;
 
@@ -15,19 +14,7 @@ public class ObstacleSideChecking : MonoBehaviour
         if (GameManager.GameOver())
             return;
 
-        KillPlayerSideChecking();
         SpawnObstacleSideChecking();
-    }
-
-    void KillPlayerSideChecking()
-    {
-        RaycastHit2D leftCheck = Raycast(new Vector2(-sideOffset, 0f), Vector2.left, rayLength, playerLayer);
-        RaycastHit2D rightCheck = Raycast(new Vector2(sideOffset, 0f), Vector2.right, rayLength, playerLayer);
-
-        if (leftCheck || rightCheck)
-        {
-            GameManager.PlayerDied();
-        }
     }
 
     void SpawnObstacleSideChecking() 
